@@ -1,4 +1,14 @@
 let cart = [];
+let allProducts = [];
+
+// Load products from JSON
+fetch('products.json')
+    .then(r => r.json())
+    .then(data => {
+        allProducts = data.products;
+        renderProducts('all');
+        handleProductURL();
+    });
 
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
@@ -86,41 +96,70 @@ function sendWhatsAppOrder() {
     window.open('https://wa.me/94773503720?text=' + msg, '_blank');
 }
 
+function renderProducts(category = 'all', searchVal = '') {
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = '';
+
+    const filtered = allProducts.filter(p => {
+        const matchCategory = category === 'all' || p.category === category;
+        const matchSearch = p.name.toLowerCase().includes(searchVal.toLowerCase());
+        return matchCategory && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+        document.getElementById('noResults').style.display = 'block';
+        return;
+    }
+
+    document.getElementById('noResults').style.display = 'none';
+
+    filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = `product-card ${product.category}`;
+        card.onclick = () => openProduct(product);
+        card.innerHTML = `
+            <div class="card-img">
+                <img src="${product.images[0]}" alt="${product.name}">
+                <div class="card-overlay">View Details</div>
+                <span class="card-tag">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
+            </div>
+            <div class="card-body">
+                <div class="card-info">
+                    <h3>${product.name}</h3>
+                    <span class="card-medium">${product.medium}</span>
+                </div>
+                <div class="card-foot">
+                    <span class="card-price">Rs ${product.price.toLocaleString()}</span>
+                    <button class="card-add" onclick="event.stopPropagation(); addToCart('${product.name}', ${product.price})">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
 function filterProducts(category, btn) {
     document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     document.getElementById('searchInput').value = '';
-    let count = 0;
-    document.querySelectorAll('.product-card').forEach(card => {
-        const show = category === 'all' || card.classList.contains(category);
-        card.style.display = show ? '' : 'none';
-        if (show) count++;
-    });
-    document.getElementById('noResults').style.display = count === 0 ? 'block' : 'none';
+    renderProducts(category, '');
 }
 
 document.getElementById('searchInput').addEventListener('input', function () {
-    const val = this.value.toLowerCase().trim();
-    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-    let count = 0;
-    document.querySelectorAll('.product-card').forEach(card => {
-        const name = card.querySelector('h3').textContent.toLowerCase();
-        const show = name.includes(val);
-        card.style.display = show ? '' : 'none';
-        if (show) count++;
-    });
-    document.getElementById('noResults').style.display = count === 0 ? 'block' : 'none';
+    renderProducts('all', this.value);
 });
 
-function openProduct(title, price, desc, images) {
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalPrice').textContent = 'Rs ' + price.toLocaleString();
-    document.getElementById('modalDesc').textContent = desc;
-    document.getElementById('modalMainImg').src = images[0];
+function openProduct(product) {
+    document.getElementById('modalTitle').textContent = product.name;
+    document.getElementById('modalPrice').textContent = 'Rs ' + product.price.toLocaleString();
+    document.getElementById('modalDesc').textContent = product.description;
+    document.getElementById('modalMainImg').src = product.images[0];
 
     const thumbs = document.getElementById('modalThumbs');
     thumbs.innerHTML = '';
-    images.forEach((src, i) => {
+    product.images.forEach((src, i) => {
         const img = document.createElement('img');
         img.src = src;
         if (i === 0) img.classList.add('active');
@@ -133,19 +172,35 @@ function openProduct(title, price, desc, images) {
     });
 
     document.getElementById('modalAddBtn').onclick = () => {
-        addToCart(title, price);
+        addToCart(product.name, product.price);
         closeProduct();
     };
 
     document.getElementById('productModal').classList.add('show');
     document.getElementById('modalBackdrop').classList.add('show');
     document.body.style.overflow = 'hidden';
+
+    // Update URL
+    window.history.pushState(null, null, `?product=${product.id}`);
 }
 
 function closeProduct() {
     document.getElementById('productModal').classList.remove('show');
     document.getElementById('modalBackdrop').classList.remove('show');
     document.body.style.overflow = '';
+    window.history.pushState(null, null, '?');
+}
+
+function handleProductURL() {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('product');
+    
+    if (productId) {
+        const product = allProducts.find(p => p.id === productId);
+        if (product) {
+            setTimeout(() => openProduct(product), 100);
+        }
+    }
 }
 
 document.addEventListener('keydown', e => {
