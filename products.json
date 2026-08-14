@@ -7,7 +7,11 @@
       "category": "drawing",
       "medium": "Pencil & pen on A3",
       "description": "A breathtaking A3 pencil artwork capturing the historic grandeur of the Galle Fort. Every detail rendered with meticulous precision — the ornate architecture, light, and shadow. Framed and ready to display.",
-      "images": ["images/Galle-Drawing-A3-1st.jpg", "images/Galle-Drawing-A3-2nd.jpg", "images/Galle-Drawing-A3-3rd.jpg"]
+      "images": [
+        "images/Galle-Drawing-A3-1st.jpg",
+        "images/Galle-Drawing-A3-2nd.jpg",
+        "images/Galle-Drawing-A3-3rd.jpg"
+      ]
     },
     {
       "id": "tree-drawing",
@@ -15,8 +19,12 @@
       "price": 2200,
       "category": "drawing",
       "medium": "Pencil on A3",
-      "description": "A vibrant contemporary piece capturing real life tree. Bold strokes of amber, structure without leaf. This drawing from me when I was studying 1st year at SVIAS Eastern University.",
-      "images": ["images/Tree- Drawing-A3-1st.jpg", "images/Tree- Drawing-A3-2nd.jpg", "images/Tree- Drawing-A3-3rd.jpg"]
+      "description": "A vibrant contemporary piece capturing a real-life tree with bold structural lines and expressive details. This artwork was created during my first year of study at SVIAS, Eastern University.",
+      "images": [
+        "images/Tree-Drawing-A3-1st.jpg",
+        "images/Tree-Drawing-A3-2nd.jpg",
+        "images/Tree-Drawing-A3-3rd.jpg"
+      ]
     },
     {
       "id": "object-painting",
@@ -24,8 +32,12 @@
       "price": 6000,
       "category": "painting",
       "medium": "Oil on canvas",
-      "description": "A breathtaking A3 oil paint artwork capturing the historic grandeur of the object. Every detail rendered with meticulous precision — the ornate architecture, light, and shadow. Framed and ready to display.",
-      "images": ["images/Random-painting-A3-1st.jpg", "images/Random-painting-A3-2nd.jpg", "images/Random-painting-A3-3rd.jpg"]
+      "description": "An expressive oil painting showcasing everyday objects through light, colour, and texture. Carefully composed and painted to create depth and visual interest.",
+      "images": [
+        "images/Random-painting-A3-1st.jpg",
+        "images/Random-painting-A3-2nd.jpg",
+        "images/Random-painting-A3-3rd.jpg"
+      ]
     },
     {
       "id": "roman-ruins-night-lamp",
@@ -33,20 +45,25 @@
       "price": 22000,
       "category": "craft",
       "medium": "Clay Sculpture",
-      "description": "A handcrafted Roman-style architectural sculpture with a built-in warm night lamp. Featuring classic Ionic columns and ornate arches, this piece brings ancient elegance to any room. Each lamp is individually crafted from premium materials with meticulous attention to detail. Perfect for living rooms, bedrooms, studies, and gifting. Custom orders available — contact us to personalise size, colour, or design to match your space.",
-      "images": ["images/Roman-Ruins-Night-Lamp-1st.jpg", "images/Roman-Ruins-Night-Lamp-2nd.jpg", "images/Roman-Ruins-Night-Lamp-3rd.jpg"]
+      "description": "A handcrafted Roman-style architectural sculpture with a built-in warm night lamp.",
+      "images": [
+        "images/Roman-Ruins-Night-Lamp-1st.jpg",
+        "images/Roman-Ruins-Night-Lamp-2nd.jpg",
+        "images/Roman-Ruins-Night-Lamp-3rd.jpg"
+      ]
     },
     {
-      "id": "AA-CFT-001",
+      "id": "aa-cft-001",
       "name": "Golden Fractures",
       "price": 4500,
       "category": "craft",
       "medium": "Mixed media on canvas with POP and metallic gold",
-      "description": "A contemporary textured artwork inspired by the beauty of cracked stone and the Japanese Kintsugi philosophy. Deep black textures are contrasted with luminous golden fractures, symbolizing strength, transformation, and the beauty found in imperfection. A bold statement piece designed to add a luxurious and artistic character to any interior.",
+      "description": "A contemporary textured artwork inspired by the beauty of cracked stone and the Japanese Kintsugi philosophy.",
       "images": [
         "images/Blackgold-1st.jpg",
         "images/Blackgold-2nd.jpg",
         "images/Blackgold-3rd.jpg"
+      ]
     }
   ]
 }
