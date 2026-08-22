@@ -64,6 +64,21 @@
         "images/Blackgold-2nd.jpg",
         "images/Blackgold-3rd.jpg"
       ]
-    }
+    },
+    {
+    "id": "mini-fortress-sculpture",
+    "name": "Miniature Fortress Sculpture",
+    "price": 3000,
+    "category": "craft",
+    "medium": "Plaster of Paris (POP) & oil paint",
+    "description": "A handcrafted miniature fortress sculpture inspired by historic stone architecture. Featuring detailed brick textures, fortified walls, battlements, and aged stone effects, this 3-inch decorative piece combines earthy dark tones with subtle green and golden highlights. Lightweight at approximately 250g, it is perfect for desks, shelves, display cabinets, and collectors of handmade architectural art.",
+    "size": "3 inches",
+    "weight": "250g",
+    "images": [
+       "images/Mini-Fortress-Sculpture-1st.jpg",
+       "images/Mini-Fortress-Sculpture-2nd.jpg",
+       "images/Mini-Fortress-Sculpture-3rd.jpg"
+     ]
+   }
   ]
 }
